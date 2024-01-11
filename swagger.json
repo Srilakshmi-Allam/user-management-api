@@ -1,0 +1,3250 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Exalent Episode API",
+    "version": "1.0.0",
+    "description": "API documentation for Exalent Episode operations"
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Users": {
+        "type": "object",
+        "properties": {
+          "UserID": {
+            "type": "string"
+          },
+          "UserEmail": {
+            "type": "string"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "UserHomePage": {
+            "type": "string"
+          },
+          "AccountLocked": {
+            "type": "boolean"
+          },
+          "RequirePasswordChange": {
+            "type": "boolean"
+          },
+          "UserGroupID": {
+            "type": "string"
+          },
+          "RoleID": {
+            "type": "string"
+          },
+          "CreatedBy": {
+            "type": "string"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UpdatedBy": {
+            "type": "string"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "UserGroups": {
+        "type": "object",
+        "properties": {
+          "UserGroupID": {
+            "type": "string"
+          },
+          "UserGroupName": {
+            "type": "string"
+          },
+          "CreatedBy": {
+            "type": "string"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UpdatedBy": {
+            "type": "string"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Roles": {
+        "type": "object",
+        "properties": {
+          "RoleID": {
+            "type": "string"
+          },
+          "RoleName": {
+            "type": "string"
+          },
+          "UserGroupID": {
+            "type": "string"
+          },
+          "CreatedBy": {
+            "type": "string"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UpdatedBy": {
+            "type": "string"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Modules": {
+        "type": "object",
+        "properties": {
+          "ModuleID": {
+            "type": "string"
+          },
+          "ModuleName": {
+            "type": "string"
+          },
+          "ModuleIcon": {
+            "type": "string"
+          },
+          "UserGroupID": {
+            "type": "string"
+          },
+          "ModuleActive": {
+            "type": "boolean"
+          },
+          "ModuleOrder": {
+            "type": "integer"
+          },
+          "CreatedBy": {
+            "type": "string"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UpdatedBy": {
+            "type": "string"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Screens": {
+        "type": "object",
+        "properties": {
+          "ScreenID": {
+            "type": "string"
+          },
+          "ScreenName": {
+            "type": "string"
+          },
+          "ScreenURL": {
+            "type": "string"
+          },
+          "ScreenActive": {
+            "type": "boolean"
+          },
+          "ScreenOrder": {
+            "type": "integer"
+          },
+          "ModuleID": {
+            "type": "string"
+          },
+          "CreatedBy": {
+            "type": "string"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UpdatedBy": {
+            "type": "string"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "RoleAccessScreens": {
+        "type": "object",
+        "properties": {
+          "RoleAccessScreenID": {
+            "type": "string"
+          },
+          "RoleID": {
+            "type": "string"
+          },
+          "ScreenID": {
+            "type": "string"
+          }
+        }
+      },
+      "Member": {
+        "type": "object",
+        "properties": {
+          "member_id": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string",
+            "maxLenght": 1
+          },
+          "birth_date": {
+            "type": "string"
+          },
+          "external_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ClaimsHistory": {
+        "type": "object",
+        "properties": {
+          "episode_claim_key": {
+            "type": "integer"
+          },
+          "episode_history_key": {
+            "type": "integer"
+          },
+          "claim_id": {
+            "type": "string"
+          },
+          "episode_action": {
+            "type": "string"
+          },
+          "episode_match_criteria": {
+            "type": "string"
+          }
+        }
+      },
+      "EpisodesHistory": {
+        "type": "object",
+        "properties": {
+          "episode_history_key": {
+            "type": "integer"
+          },
+          "episode_id": {
+            "type": "string"
+          },
+          "member_id": {
+            "type": "string"
+          },
+          "episode_identified_date": {
+            "type": "date"
+          },
+          "episode_anchor_date": {
+            "type": "date"
+          },
+          "episode_start_date": {
+            "type": "date"
+          },
+          "episode_end_date": {
+            "type": "date"
+          },
+          "episode_status": {
+            "type": "string",
+            "maxlength": 1
+          },
+          "episode_close_reason": {
+            "type": "string"
+          },
+          "episode_closed_by": {
+            "type": "string"
+          }
+        }
+      },
+      "EpisodeCodeSets": {
+        "type": "object",
+        "properties": {
+          "episode_code_set_key": {
+            "type": "integer"
+          },
+          "code_set_id": {
+            "type": "string"
+          },
+          "code_set_name": {
+            "type": "string"
+          },
+          "code_type": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "EpisodeRules": {
+        "type": "object",
+        "properties": {
+          "episode_rule_key": {
+            "type": "integer"
+          },
+          "episode_rule_id": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "episode_rule_name": {
+            "type": "string"
+          },
+          "episode_rule_description": {
+            "type": "string"
+          },
+          "episode_rule_json": {
+            "type": "object"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "EpisodeDefinitions": {
+        "type": "object",
+        "properties": {
+          "episode_definition_id": {
+            "type": "string"
+          },
+          "episode_name": {
+            "type": "string"
+          },
+          "episode_description": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "episode_status": {
+            "type": "string"
+          },
+          "anchor_date_type": {
+            "type": "string"
+          },
+          "look_back_period_days": {
+            "type": "integer"
+          },
+          "post_anchor_date_period_days": {
+            "type": "integer"
+          },
+          "episode_process_priority": {
+            "type": "integer"
+          },
+          "episode_calculation_type": {
+            "type": "string"
+          },
+          "episode_type": {
+            "type": "string"
+          },
+          "episode_trigger_rule_id": {
+            "type": "string"
+          },
+          "episode_relevant_codes_rule_id": {
+            "type": "string"
+          },
+          "pre_procedure_days": {
+            "type": "integer"
+          },
+          "recovery_days": {
+            "type": "integer"
+          },
+          "readmin_days": {
+            "type": "integer"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_by": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "EpisodeClaims": {
+        "type": "object",
+        "properties": {
+          "episode_claim_key": {
+            "type": "integer"
+          },
+          "episode_history_key": {
+            "type": "integer"
+          },
+          "claim_id": {
+            "type": "string"
+          },
+          "episode_action": {
+            "type": "string"
+          },
+          "episode_match_criteria": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "summary": "Create a new User",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Users"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all Users.",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "Filter by username (optional)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "firstName",
+            "in": "query",
+            "description": "Filter by first name (optional)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastName",
+            "in": "query",
+            "description": "Filter by last name (optional)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userEmail",
+            "in": "query",
+            "description": "Filter by user email (optional)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roleName",
+            "in": "query",
+            "description": "Filter by role name (optional)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "Filter by group name (optional)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Users"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Users",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usersById/{id}": {
+      "get": {
+        "summary": "Get a Users by its ID",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Users to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Users retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Users not found"
+          },
+          "500": {
+            "description": "Error fetching Users",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usersByEmail/{email}": {
+      "get": {
+        "summary": "Get a Users by its email",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "email",
+            "description": "email of the Users to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Users retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Users not found"
+          },
+          "500": {
+            "description": "Error fetching Users",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "put": {
+        "summary": "Update a Users by ID",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Users to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Users object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Users"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "User not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating User",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error updating User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/userGroups": {
+      "post": {
+        "summary": "Create a new User Group",
+        "tags": [
+          "User Groups"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserGroups"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGroups"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all User Groups.",
+        "tags": [
+          "User Groups"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the User Groups",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserGroups"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching User Groups",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching User Groups"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/userGroupsPagination": {
+      "get": {
+        "summary": "Get all User Groups.",
+        "tags": [
+          "User Groups"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "UserGroupID",
+            "in": "query",
+            "description": "Filter by UserGroupID (optional).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "UserGroupName",
+            "in": "query",
+            "description": "Filter by UserGroupName (optional).",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the User Groups",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserGroups"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching User Groups",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching User Groups"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/userGroups/{id}": {
+      "get": {
+        "summary": "Get a User Groups by its ID",
+        "tags": [
+          "User Groups"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the User Groups to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Groups retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGroups"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User Groups not found"
+          },
+          "500": {
+            "description": "Error fetching User Groups",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching User Groups"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a User Groups by ID",
+        "tags": [
+          "User Groups"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the User Groups to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated User Groups object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserGroups"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Group updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGroups"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User Group not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "User Group not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating User Group",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error updating User Group"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roles": {
+      "post": {
+        "summary": "Create a new Role",
+        "tags": [
+          "Roles"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Roles"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Roles"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all Roles.",
+        "tags": [
+          "Roles"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Roles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Roles"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Roles",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Roles"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roles/{id}": {
+      "get": {
+        "summary": "Get a Roles by its ID",
+        "tags": [
+          "Roles"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Roles to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Roles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Roles"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Roles not found"
+          },
+          "500": {
+            "description": "Error fetching Roles",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Roles"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a Roles by ID",
+        "tags": [
+          "Roles"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Roles to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Roles object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Roles"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Role updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Roles"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Role not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Role not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating Role",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error updating Role"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rolesWithModulesAndScreens/{roleId}": {
+      "get": {
+        "summary": "Get a role with modules and screens by RoleID",
+        "tags": [
+          "Role with modules and screens based on RoleID"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleId",
+            "required": true,
+            "description": "ID of the role to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Roles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Roles"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Roles not found"
+          },
+          "500": {
+            "description": "Error fetching Roles",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Roles"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roleByUserGroup/{userGroupId}": {
+      "get": {
+        "summary": "Get roles by UserGroupID",
+        "tags": [
+          "Role by UserGroup"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userGroupId",
+            "description": "ID of the UserGroup to retrieve roles for",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Roles retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Roles"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No roles found for the specified UserGroupID"
+          },
+          "500": {
+            "description": "Error fetching Roles",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Roles"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/modules": {
+      "post": {
+        "summary": "Create a new Module",
+        "tags": [
+          "Modules"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Modules"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Modules"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all Modules.",
+        "tags": [
+          "Modules"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Modules",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Modules"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Modules",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Modules"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/modules/{id}": {
+      "get": {
+        "summary": "Get a Module by its ID",
+        "tags": [
+          "Modules"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Module to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Module retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Modules"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Module not found"
+          },
+          "500": {
+            "description": "Error fetching Module",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Module"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a Module by ID",
+        "tags": [
+          "Modules"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Module to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Module object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Modules"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Module updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Modules"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Module not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Module not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating Module",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error updating Module"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/screens": {
+      "post": {
+        "summary": "Create a new Screen",
+        "tags": [
+          "Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Screens"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Screens"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all Screens.",
+        "tags": [
+          "Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Screens",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Screens"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Screens",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Screens"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/screensPagination": {
+      "get": {
+        "summary": "Get all Screens.",
+        "tags": [
+          "Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Screens",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Screens"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Screens",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Screens"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/screens/{id}": {
+      "get": {
+        "summary": "Get a Screens by its ID",
+        "tags": [
+          "Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Screens to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Screens retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Screens"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Screens not found"
+          },
+          "500": {
+            "description": "Error fetching Screens",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Screens"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a Screens by ID",
+        "tags": [
+          "Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Screens to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Screens object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Screens"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Screens updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Screens"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Screen not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Screen not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating Screen",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error updating Screen"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/userScreens/{userEmail}": {
+      "get": {
+        "summary": "Get all screens displayed to the user ordered by module and screen",
+        "tags": [
+          "UserScreens by modules and screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userEmail",
+            "description": "Email of the Screens to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Screens retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Screens"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Screens not found"
+          },
+          "500": {
+            "description": "Error fetching Screens",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Screens"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roleAccessScreens": {
+      "post": {
+        "summary": "Create Role Access Screens",
+        "tags": [
+          "Role Access Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleAccessScreens"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleAccessScreens"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all role access screens.",
+        "tags": [
+          "Role Access Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Role Access Screen",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RoleAccessScreens"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Role Access Screen",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Role Access Screen"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete role access screens by their IDs",
+        "tags": [
+          "Role Access Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "Array of Role Access Screen IDs to delete",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "example": {
+                "ids": [
+                  "Id1",
+                  "Id2"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Role access screens deleted successfully",
+            "content": {
+              "application/json": {
+                "example": "Role access screens deleted successfully"
+              }
+            }
+          },
+          "404": {
+            "description": "Role Access Screen not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Role Access Screen not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error deleting Role Access Screen",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error deleting Role Access Screen"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roleAccessScreens/{id}": {
+      "get": {
+        "summary": "Get a Role Access Screen by its ID",
+        "tags": [
+          "Role Access Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Role Access Screen to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Role Access Screen retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleAccessScreens"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Role Access Screen not found"
+          },
+          "500": {
+            "description": "Error fetching Role Access Screen",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Role Access Screen"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a Role Access Screen by ID",
+        "tags": [
+          "Role Access Screens"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the Role Access Screen to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Role Access Screen object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleAccessScreens"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Role Access Screen updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleAccessScreens"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Role Access Screen not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Role Access Screen not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating Role Access Screen",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error updating Role Access Screen"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/audit": {
+      "post": {
+        "summary": "Create a new Audit",
+        "tags": [
+          "Audit"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "Audit object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "UserID": {
+                    "type": "string"
+                  },
+                  "UserEmail": {
+                    "type": "string"
+                  },
+                  "Action": {
+                    "type": "string"
+                  },
+                  "Page": {
+                    "type": "string"
+                  },
+                  "Browser": {
+                    "type": "string"
+                  },
+                  "OS": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Audit created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Audit"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error creating Audit",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error creating Audit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updatePassword/{email}/{newPassword}": {
+      "put": {
+        "summary": "Update a user password",
+        "tags": [
+          "Password"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "email",
+            "required": true,
+            "description": "enter users email to update password",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "newPassword",
+            "required": true,
+            "description": "enter new password",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Password and metadata updated successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Password and metadata updated successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Invalid input"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "User not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Internal server error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resetPassword/{email}": {
+      "put": {
+        "summary": "Reset email for a user to change password",
+        "tags": [
+          "Password"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "email",
+            "required": true,
+            "description": "enter users email",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Password and metadata updated successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Password and metadata updated successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Invalid input"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "User not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Internal server error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/members": {
+      "get": {
+        "summary": "Get all members.",
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly fetched the Member details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Member"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching member details",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching member details"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/claims": {
+      "get": {
+        "summary": "Get all claims.",
+        "tags": [
+          "ClaimsHistory"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly fetched the claim details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClaimsHistory"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching claim details",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching claim details"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/claims/{id}": {
+      "get": {
+        "summary": "Get a claims by its ID",
+        "tags": [
+          "EpisodeClaims"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the episode claims to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "episode claims retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeClaims"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "episode claims list not found"
+          },
+          "500": {
+            "description": "Error while fetching episode claims",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching episode claims"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodes": {
+      "get": {
+        "summary": "Get all episodes.",
+        "tags": [
+          "EpisodesHistory"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfuly fetched the episode details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodesHistory"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching episode details",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching episode details"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodes/{id}": {
+      "get": {
+        "summary": "Get a episode information by its ID",
+        "tags": [
+          "EpisodesHistory"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the episode to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "episodes retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodesHistory"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Episodes not found"
+          },
+          "500": {
+            "description": "Error while fetching episodes",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching episodes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodeCodeSets": {
+      "post": {
+        "summary": "Create a new Episode Code Set",
+        "tags": [
+          "Episode Code Sets"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EpisodeCodeSets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeCodeSets"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all Episode Code Sets.",
+        "tags": [
+          "Episode Code Sets"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Episode Code Sets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeCodeSets"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Episode Code Sets",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Episode Code Sets"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodeCodeSets/{key}": {
+      "get": {
+        "summary": "Get Episode Code Sets by its key",
+        "tags": [
+          "Episode Code Sets"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "description": "Code Set Key",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Episode Code Set retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeCodeSets"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Episode Code Set not found"
+          },
+          "500": {
+            "description": "Error fetching Episode Code Set",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Episode Code Set"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a Episode Code Set by key",
+        "tags": [
+          "Episode Code Sets"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "description": "Episode Code Set Key to update",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Episode Code Set object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EpisodeCodeSets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Episode Code Set updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeCodeSets"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Episode Code Set not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Episode Code Set not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating Episode Code Set",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error updating Episode Code Set"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodeCodeSetsDrg": {
+      "get": {
+        "summary": "Get all Episode Code Sets.",
+        "tags": [
+          "Episode Code Sets"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Episode Code Sets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeCodeSets"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Episode Code Sets",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Episode Code Sets"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodeCodeSetsDiag": {
+      "get": {
+        "summary": "Get all Episode Code Sets.",
+        "tags": [
+          "Episode Code Sets"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Episode Code Sets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeCodeSets"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Episode Code Sets",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Episode Code Sets"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodeRules": {
+      "post": {
+        "summary": "Create a new Episode Rule",
+        "tags": [
+          "Episode Rules"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EpisodeRules"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeRules"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all Episode rules.",
+        "tags": [
+          "Episode Rules"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filterByLatest",
+            "in": "query",
+            "description": "Filtering the latest records by start date.",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Episode Rules",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeRules"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Episode Rule",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Episode Rule"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodeRules/{id}": {
+      "get": {
+        "summary": "Get a Episode Rule by its ID",
+        "tags": [
+          "Episode Rules"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the Episode Rule to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Episode Rule retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeRules"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Episode Rule not found"
+          },
+          "500": {
+            "description": "Error fetching Episode Rule",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Episode Rule"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodeRules/{key}": {
+      "put": {
+        "summary": "Update a Episode Rule by key",
+        "tags": [
+          "Episode Rules"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "description": "Episode Rule key to update",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Episode Rule object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EpisodeRules"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Episode Rule updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeRules"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Episode Rule not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Episode Rule not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating Episode Rule",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error updating Episode Rule"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodeDefinitions": {
+      "post": {
+        "summary": "Create a new Episode Definition",
+        "tags": [
+          "Episode Definitions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EpisodeDefinitions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeDefinitions"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all Episode Definitions.",
+        "tags": [
+          "Episode Definitions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetching the Episode Definitions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeDefinitions"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error while fetching Episode Definitions",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error while fetching Episode Definitions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/episodeDefinitions/{id}": {
+      "get": {
+        "summary": "Get a Episode Definitions by its ID",
+        "tags": [
+          "Episode Definitions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the Episode Definitions to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Episode Definitions retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeDefinitions"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Episode Definitions not found"
+          },
+          "500": {
+            "description": "Error fetching Episode Definitions",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error fetching Episode Definitions"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a Episode Definitions by id",
+        "tags": [
+          "Episode Definitions"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Episode Definitions id to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Episode Definition object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EpisodeDefinitions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Episode Definitions updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EpisodeDefinitions"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Episode Definition not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Episode Definition not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating Episode Definition",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Error updating Episode Definition"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}
