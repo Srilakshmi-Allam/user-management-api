@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'exalent-episode-detector-docker'
-  imageRepository: 'episodeapi'
+  imageRepository: 'usermanagementapi'
   containerRegistry: 'exalent.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
@@ -19,10 +19,10 @@ variables:
   azureSubscription: 'exalent-episode-detector-resource-manager'
 
   # Web app name
-  webAppName: 'exalent-episode-core-api'
+  webAppName: 'exalent-user-management-api'
 
   # Environment name
-  environmentName: 'exalent-episode-core-api'
+  environmentName: 'exalent-user-management-api'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
