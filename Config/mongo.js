@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 const errorMessages = require ('../utils/ErrorMessages.js');
 
-
-// const mongoURI = config.get('mongoURI');
-
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.ATLAS_MONGO_URI, {
