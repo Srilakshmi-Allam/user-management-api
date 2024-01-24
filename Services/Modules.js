@@ -1,6 +1,5 @@
 const { Op } = require('sequelize');
 const Module = require('../Models/Modules');
-// const sequelize = require('../Config/Connection');
 const { pagination } = require('../utils/Common');
 const CustomError = require('../utils/CustomError');
 const errorMessages = require('../utils/ErrorMessages');

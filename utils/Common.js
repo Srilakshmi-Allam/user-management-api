@@ -10,31 +10,10 @@ function pagination(page, pageSize) {
   return { offset, limit };
 }
 
-function parseJson(json) {
-  if (json) {
-    try {
-      json = JSON.parse(json);
-    } catch (error) {
-      throw new CustomError("Error while parsing Json", 500);
-    }
-  }
-  return json;
-}
-function stringfyJson(json) {
-  if (!json) return "";
-  try {
-    json = JSON.stringify(json);
-  } catch (error) {
-    throw new CustomError("Error while stringfying Json", 500);
-  }
-  return json;
-}
-
 
 
 
 module.exports = {
   pagination,
-  parseJson,
   stringfyJson,
 };

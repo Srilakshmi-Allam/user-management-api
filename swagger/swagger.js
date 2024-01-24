@@ -25,7 +25,6 @@ const options = {
         './Controllers/Screens.js',
         './Controllers/RoleAccessScreens.js',
         './Controllers/trial.js',
-        './Controllers/AuditController.js',
         './Controllers/AuthUpdatePassword.js',
     ] // Make sure this is an array
 }

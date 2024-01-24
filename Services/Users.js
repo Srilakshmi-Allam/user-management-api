@@ -2,16 +2,13 @@ const { Op } = require('sequelize');
 const User = require('../Models/Users');
 const Role = require('../Models/Roles');
 const UserGroup = require('../Models/UserGroups');
-require('dotenv').config();
-const Sequelize = require('sequelize');
-// const sequelize = require('../Config/Connection');
+
 const { pagination, chartData, pieData } = require('../utils/Common');
 const CustomError = require('../utils/CustomError');
 const errorMessages = require('../utils/ErrorMessages');
 const axios = require('axios');
 const generateRandomPassword = require('../utils/PasswordGenerator'); // Adjust the path as needed
 const { getAuth0AccessToken } = require('../utils/CreateUserAccessToken'); // Import the fetchUserData function
-const sequelize = require('../Config/Connection');
 
 const getUser = async (req, { searchFilters, page = 1, pageSize = 10 }) => {
   try {

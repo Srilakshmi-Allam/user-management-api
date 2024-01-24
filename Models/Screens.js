@@ -1,8 +1,7 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../Config/Connection');
 const Module = require('../Models/Modules');
 
-const Screen = sequelize.define('Screen', {
+const Screen = global.sequelize.define('Screen', {
     ScreenID: {
         type: DataTypes.STRING,
         primaryKey: true,
