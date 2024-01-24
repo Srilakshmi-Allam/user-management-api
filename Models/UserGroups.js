@@ -1,7 +1,5 @@
 const { DataTypes } = require('sequelize');
 
-console.log('global.sequelize in user group', global.sequelize)
-
 const UserGroup = global.sequelize.define('UserGroup', {
   UserGroupID: {
     type: DataTypes.STRING,

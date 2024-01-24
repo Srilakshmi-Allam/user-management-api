@@ -8,7 +8,6 @@ const initialize = async (config) => {
     process.env = { ...process.env, ...config };
 
     // Get sequelize database from the module that's using this
-    console.log('config.sequelize', config.sequelize);
 
     global.sequelize = config.sequelize;
 }

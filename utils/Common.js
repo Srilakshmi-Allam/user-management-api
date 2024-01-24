@@ -1,4 +1,3 @@
-const CustomError = require("./CustomError");
 
 // pagination.js
 function pagination(page, pageSize) {
@@ -15,5 +14,4 @@ function pagination(page, pageSize) {
 
 module.exports = {
   pagination,
-  stringfyJson,
 };
