@@ -6,6 +6,5 @@ module.exports = {
     roleController: require('./Roles'),
     RoleAccessScreenController: require('./RoleAccessScreens'),
     ModuleController: require('./Modules'),
-    AuditController: require('./AuditController'),
     AuthUpdatePassword: require('./AuthUpdatePassword'),
 }

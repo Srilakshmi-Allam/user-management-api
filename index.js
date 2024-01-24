@@ -1,27 +1,27 @@
 const dotenv = require('dotenv');
 
-const connectMongoDB = require('./Config/mongo');
-const pgsqlConnection = require('./Config/Connection');
-
 const { userGroupController,
     userController,
     screenController,
     roleController,
     RoleAccessScreenController,
     ModuleController,
-    AuditController,
     AuthUpdatePassword,
 } = require('./Controllers')
 
 const initialize = async (config) => {
+
     // Load environment variables from .env file
     dotenv.config();
 
     // Override environment variables with config values
     process.env = { ...process.env, ...config };
-    
-    await connectMongoDB(config); // Connect to MongoDB
-    await pgsqlConnection.initialize(config);
+
+    // get sequlize database from module who using this
+
+    console.log('config.sequelize', config.sequelize)
+
+    global.sequelize = config.sequelize;
 }
 
 // Export everything in a single object
@@ -33,6 +33,5 @@ module.exports = {
     roleController,
     RoleAccessScreenController,
     ModuleController,
-    AuditController,
     AuthUpdatePassword,
   };

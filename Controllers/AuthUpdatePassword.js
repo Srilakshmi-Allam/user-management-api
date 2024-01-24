@@ -1,6 +1,5 @@
 const axios = require('axios');
 const { getAuth0AccessToken } = require('../utils/CreateUserAccessToken'); // Adjust the path to the auth0AccessToken file
-require('dotenv').config();
 const generateRandomPassword = require('../utils/PasswordGenerator');
 
 /**

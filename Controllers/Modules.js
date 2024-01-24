@@ -1,5 +1,4 @@
 const Module = require('../Services/Modules');
-const errorMessages = require('../utils/ErrorMessages');
 
 /**
  * @swagger
