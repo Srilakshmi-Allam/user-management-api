@@ -1,8 +1,7 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../Config/Connection');
 const UserGroup = require('../Models/UserGroups');
 
-const Module = sequelize.define('Module', {
+const Module = global.sequelize.define('Module', {
     ModuleID: {
         type: DataTypes.STRING,
         primaryKey: true,

@@ -1,10 +1,9 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../Config/Connection');
 const UserGroup = require('../Models/UserGroups');
 const Role = require('../Models/Roles');
 const RoleAccessScreen = require('../Models/RoleAccessScreens');
 
-const User = sequelize.define('User', {
+const User = global.sequelize.define('User', {
     UserID: {
         type: DataTypes.STRING,
         primaryKey: true,

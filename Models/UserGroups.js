@@ -1,7 +1,8 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../Config/Connection');
 
-const UserGroup = sequelize.define('UserGroup', {
+console.log('global.sequelize in user group', global.sequelize)
+
+const UserGroup = global.sequelize.define('UserGroup', {
   UserGroupID: {
     type: DataTypes.STRING,
     primaryKey: true,
