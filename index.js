@@ -1,6 +1,9 @@
 const dotenv = require('dotenv');
 
 const initialize = async (config) => {
+    if (!config || !config.sequelize) {
+        throw new Error('Config variable with sequelize property is required');
+    }
     // Load environment variables from .env file
     dotenv.config();
 

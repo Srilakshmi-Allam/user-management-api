@@ -1,20 +1,64 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# User Management Backend Core API Module
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+This module provides core functionality for handling user-related operations, including User, Roles, Screens, UserGroup, etc., in the backend of your application. It encompasses business logic for creating and manipulating these entities.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Configuration
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+Before using this module, you need to configure it by passing necessary environment variables and establishing a PostgreSQL connection.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+### 1. Environment Variables
+
+Ensure the following environment variables are set:
+
+-  AUTH0_DOMAIN
+-  AUTH0_CLIENT_ID
+-  AUTH0_CLIENT_SECRET
+-  AUDIENCE
+-  AUTH0_TOKEN_URL
+-  AUTH0_MANAGEMENT_API_AUDIENCE
+-  AUTH0_EMAIL_API_URL
+
+### 2. PostgreSQL Connection
+
+This module relies on a PostgreSQL database for storing user-related data. Make sure to provide the correct PostgreSQL connection details in the `sequelize` config variable.
+
+## Installation
+
+1. Install the module as a dependency in your project:
+
+   ```bash
+   npm install @exalent/user-management-api
+
+## Usage
+
+1. Initialize this module before using the logic
+   `
+    const {initialize} = require('@exalent/user-management-api')
+    let config = {sequelize: pgsqlConnection, ...process.env}
+    await initialize(config)
+   `
+2. Importing the modules
+
+    `
+        const {
+            userController,
+            screenController,
+            roleController,
+            RoleAccessScreenController,
+            ModuleController,
+            AuthUpdatePassword} = getControllers()
+
+        const { 
+            AuditController,
+            userGroupController,
+            MemberController,
+            ClaimsHistoryController,
+            EpisodeHistoryController,
+            EpisodeClaims,
+            EpisodeCodeSetCodesController,
+            EpisodeCodeSetsController,
+            EpisodeRuleController,
+            EpisodeDefinitionsController,
+        } = require('../Controllers')
+    `
+

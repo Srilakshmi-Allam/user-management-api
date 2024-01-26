@@ -207,8 +207,6 @@ async function resetPassword(req, res) {
 
     // Check if the password update was successful
     if (updateUserPasswordResponse.status === 200) {
-
-        //const AuthApiUrl = process.env.AUTH0_EMAIL_API_URL;
         const auth0Response = await axios.post(
           `https://${process.env.AUTH0_DOMAIN}/dbconnections/change_password`,
           {
