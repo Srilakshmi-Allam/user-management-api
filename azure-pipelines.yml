@@ -29,5 +29,5 @@ steps:
   inputs:
     command: 'publish'
     publishRegistry: 'useFeed'
-    publishFeed: 'EpisodeDetector/exalent-user-management'
+    publishFeed: 'user-management-api'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
